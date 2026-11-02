@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="3840" height="2160" viewBox="0 0 3840 2160">
+  <defs>
+    <radialGradient id="bg" cx="48%" cy="40%" r="75%"><stop offset="0" stop-color="#1e1b4b"/><stop offset=".52" stop-color="#0f1024"/><stop offset="1" stop-color="#070711"/></radialGradient>
+    <radialGradient id="violet"><stop stop-color="#8b5cf6" stop-opacity=".72"/><stop offset="1" stop-color="#8b5cf6" stop-opacity="0"/></radialGradient>
+    <radialGradient id="blue"><stop stop-color="#2563eb" stop-opacity=".62"/><stop offset="1" stop-color="#2563eb" stop-opacity="0"/></radialGradient>
+    <filter id="blur"><feGaussianBlur stdDeviation="90"/></filter>
+  </defs>
+  <rect width="3840" height="2160" fill="url(#bg)"/>
+  <ellipse cx="1260" cy="690" rx="980" ry="760" fill="url(#violet)" filter="url(#blur)"/>
+  <ellipse cx="2860" cy="1390" rx="1100" ry="850" fill="url(#blue)" filter="url(#blur)"/>
+  <path d="M0 1670 C820 1300 1380 2050 2240 1560 S3260 1140 3840 1460 V2160 H0Z" fill="#111126" opacity=".72"/>
+  <path d="M0 1800 C900 1490 1580 2140 2410 1700 S3300 1420 3840 1660" fill="none" stroke="#8b5cf6" stroke-opacity=".18" stroke-width="4"/>
+</svg>
