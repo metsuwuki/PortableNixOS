@@ -47,7 +47,7 @@ See [docs/UPDATE-RECOVERY.md](docs/UPDATE-RECOVERY.md). Hardware and NVIDIA cons
 
 This source tree is designed to evaluate and build on NixOS or Linux with Nix and KVM. It cannot be built natively on Windows without a suitable Linux/Nix builder. Run `nix flake check` in such an environment before publishing a release.
 
-`.github/workflows/flake-check.yml` evaluates the NixOS and Home Manager configuration on every push and pull request without building the full system closure. The USB repository contains the separate, manually triggered image workflow because a standard GitHub-hosted runner does not provide enough documented disk space for the image build.
+`.github/workflows/flake-check.yml` checks the exported NixOS module on every push and pull request without constructing an invalid standalone system. The complete NixOS and Home Manager evaluation must run in the USB repository, where Disko supplies the root filesystem and boot device configuration. The USB repository contains the separate, manually triggered image workflow because a standard GitHub-hosted runner does not provide enough documented disk space for the image build.
 
 ## License
 
