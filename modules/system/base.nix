@@ -55,7 +55,8 @@
   ];
 
   services.fstrim.enable = true;
-  services.fwupd.enable = true;
+  # Firmware flashing is intentionally unavailable on a portable OS.
+  services.fwupd.enable = false;
 
   system.stateVersion = "26.05";
 }
