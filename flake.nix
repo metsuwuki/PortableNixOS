@@ -16,6 +16,7 @@
         imports = [
           home-manager.nixosModules.home-manager
           ./modules/system/base.nix
+          ./modules/system/first-boot.nix
           ./modules/system/hardware.nix
           ./modules/system/portable-safety.nix
           ./modules/system/desktop.nix
