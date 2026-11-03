@@ -16,12 +16,8 @@
   services.greetd = {
     enable = true;
     settings = {
-      initial_session = {
-        command = "${pkgs.hyprland}/bin/Hyprland";
-        user = "portable";
-      };
       default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --cmd Hyprland";
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --greeting First-boot-setup-on-tty2 --cmd Hyprland";
         user = "greeter";
       };
     };

@@ -32,12 +32,11 @@ jobs:
           free -h
           df -h "$GITHUB_WORKSPACE" /nix
 
-      - name: Evaluate Flake without building the system closure
+      - name: Validate exported NixOS module without building a system closure
         run: |
           nix flake lock
           nix flake metadata
           nix flake check --no-build --show-trace
-          nix eval --raw .#nixosConfigurations.portable.config.system.build.toplevel.drvPath
 
       - name: Upload resolved lock file for review
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7

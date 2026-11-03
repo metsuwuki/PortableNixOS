@@ -2,7 +2,6 @@
 {
   networking.hostName = "portable-nixos";
   networking.networkmanager.enable = true;
-  networking.wireless.enable = false;
 
   time.timeZone = "Europe/Berlin";
   i18n.defaultLocale = "en_US.UTF-8";
@@ -31,10 +30,11 @@
     isNormalUser = true;
     description = "Portable NixOS";
     extraGroups = [ "wheel" "networkmanager" "video" "audio" "input" ];
-    initialPassword = "portable";
+    # Locked until the owner sets a password on tty2 during first boot.
+    initialHashedPassword = "!";
     shell = pkgs.zsh;
   };
-  security.sudo.wheelNeedsPassword = false;
+  security.sudo.wheelNeedsPassword = true;
 
   programs.zsh.enable = true;
   programs.git.enable = true;
@@ -55,7 +55,8 @@
   ];
 
   services.fstrim.enable = true;
-  services.fwupd.enable = true;
+  # Firmware flashing is intentionally unavailable on a portable OS.
+  services.fwupd.enable = false;
 
   system.stateVersion = "26.05";
 }

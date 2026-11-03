@@ -27,7 +27,7 @@ docs/                     hardware, NVIDIA, update and recovery notes
 
 ## First boot
 
-The desktop auto-starts as user `portable`. The initial password is `portable`; change it immediately with `passwd`. Passwordless `sudo` is enabled so the owner can recover and update a portable installation. This is convenient, but it is not protection against a person who physically possesses the USB drive. Full-disk encryption is intentionally not enabled in this general-purpose image.
+The `portable` account starts **locked**, with no universal initial password and no automatic desktop login. At first boot, press **Ctrl+Alt+F2** to open the dedicated first-boot console. Choose a new password using the local `passwd` prompt, then return to the login screen with **Ctrl+Alt+F1** (on some keyboards the Fn key is needed). Log in as `portable` with that password. `sudo` requires your password. The first-boot initialization console stops appearing once password setup succeeds.\n\nThis image is **not encrypted**. Someone with physical possession of the USB can still read the ext4 and exFAT partitions. Avoid storing secrets unless encryption is configured.
 
 The shared Windows/Linux partition is mounted at `/data` and is labelled `PORTABLE DATA`. System state, installed packages and settings live on the USB ext4 root partition and survive reboot.
 
@@ -47,7 +47,7 @@ See [docs/UPDATE-RECOVERY.md](docs/UPDATE-RECOVERY.md). Hardware and NVIDIA cons
 
 This source tree is designed to evaluate and build on NixOS or Linux with Nix and KVM. It cannot be built natively on Windows without a suitable Linux/Nix builder. Run `nix flake check` in such an environment before publishing a release.
 
-`.github/workflows/flake-check.yml` evaluates the NixOS and Home Manager configuration on every push and pull request without building the full system closure. The USB repository contains the separate, manually triggered image workflow because a standard GitHub-hosted runner does not provide enough documented disk space for the image build.
+`.github/workflows/flake-check.yml` checks the exported NixOS module on every push and pull request without constructing an invalid standalone system. The complete NixOS and Home Manager evaluation must run in the USB repository, where Disko supplies the root filesystem and boot device configuration. The USB repository contains the separate, manually triggered image workflow because a standard GitHub-hosted runner does not provide enough documented disk space for the image build.
 
 ## License
 

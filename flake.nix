@@ -16,6 +16,7 @@
         imports = [
           home-manager.nixosModules.home-manager
           ./modules/system/base.nix
+          ./modules/system/first-boot.nix
           ./modules/system/hardware.nix
           ./modules/system/portable-safety.nix
           ./modules/system/desktop.nix
@@ -32,15 +33,7 @@
     in {
       nixosModules.default = portableModule;
 
-      nixosConfigurations.portable = nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = { inherit inputs self; };
-        modules = [ portableModule ];
-      };
-
       formatter.${system} = nixpkgs.legacyPackages.${system}.nixfmt-tree;
 
-      checks.${system}.nixos-evaluation =
-        self.nixosConfigurations.portable.config.system.build.toplevel;
     };
 }

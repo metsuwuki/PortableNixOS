@@ -2,7 +2,7 @@
 {
   # Only partitions explicitly declared by the USB image are mounted.
   # No internal-disk UUID, label, automounter, or swap device is configured.
-  services.udisks2.enable = false;
+  services.udisks2.enable = lib.mkForce false;
   services.devmon.enable = false;
   services.gvfs.enable = false;
   swapDevices = lib.mkForce [ ];
@@ -23,11 +23,11 @@
   boot.loader.timeout = 5;
 
   # Avoid hibernation: there is deliberately no disk-backed swap.
-  systemd.sleep.extraConfig = ''
-    AllowHibernation=no
-    AllowHybridSleep=no
-    AllowSuspendThenHibernate=no
-  '';
+  systemd.sleep.settings.Sleep = {
+    AllowHibernation = "no";
+    AllowHybridSleep = "no";
+    AllowSuspendThenHibernate = "no";
+  };
 
   # Filesystems discovered on internal disks remain untouched and unmounted.
   environment.etc."udev/rules.d/99-portable-internal-disks.rules".text = ''
