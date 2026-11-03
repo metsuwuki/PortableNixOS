@@ -2,7 +2,7 @@
 {
   # Only partitions explicitly declared by the USB image are mounted.
   # No internal-disk UUID, label, automounter, or swap device is configured.
-  services.udisks2.enable = false;
+  services.udisks2.enable = lib.mkForce false;
   services.devmon.enable = false;
   services.gvfs.enable = false;
   swapDevices = lib.mkForce [ ];
