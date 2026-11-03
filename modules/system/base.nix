@@ -31,10 +31,11 @@
     isNormalUser = true;
     description = "Portable NixOS";
     extraGroups = [ "wheel" "networkmanager" "video" "audio" "input" ];
-    initialPassword = "portable";
+    # Locked until the owner sets a password on tty2 during first boot.
+    initialHashedPassword = "!";
     shell = pkgs.zsh;
   };
-  security.sudo.wheelNeedsPassword = false;
+  security.sudo.wheelNeedsPassword = true;
 
   programs.zsh.enable = true;
   programs.git.enable = true;
