@@ -2,7 +2,6 @@
 {
   networking.hostName = "portable-nixos";
   networking.networkmanager.enable = true;
-  networking.wireless.enable = false;
 
   time.timeZone = "Europe/Berlin";
   i18n.defaultLocale = "en_US.UTF-8";
