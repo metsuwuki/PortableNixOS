@@ -33,15 +33,7 @@
     in {
       nixosModules.default = portableModule;
 
-      nixosConfigurations.portable = nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = { inherit inputs self; };
-        modules = [ portableModule ];
-      };
-
       formatter.${system} = nixpkgs.legacyPackages.${system}.nixfmt-tree;
 
-      checks.${system}.nixos-evaluation =
-        self.nixosConfigurations.portable.config.system.build.toplevel;
     };
 }
