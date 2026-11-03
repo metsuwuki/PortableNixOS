@@ -27,7 +27,7 @@ docs/                     hardware, NVIDIA, update and recovery notes
 
 ## First boot
 
-The desktop auto-starts as user `portable`. The initial password is `portable`; change it immediately with `passwd`. Passwordless `sudo` is enabled so the owner can recover and update a portable installation. This is convenient, but it is not protection against a person who physically possesses the USB drive. Full-disk encryption is intentionally not enabled in this general-purpose image.
+The `portable` account starts **locked**, with no universal initial password and no automatic desktop login. At first boot, press **Ctrl+Alt+F2** to open the dedicated first-boot console. Choose a new password using the local `passwd` prompt, then return to the login screen with **Ctrl+Alt+F1** (on some keyboards the Fn key is needed). Log in as `portable` with that password. `sudo` requires your password. The first-boot initialization console stops appearing once password setup succeeds.\n\nThis image is **not encrypted**. Someone with physical possession of the USB can still read the ext4 and exFAT partitions. Avoid storing secrets unless encryption is configured.
 
 The shared Windows/Linux partition is mounted at `/data` and is labelled `PORTABLE DATA`. System state, installed packages and settings live on the USB ext4 root partition and survive reboot.
 
