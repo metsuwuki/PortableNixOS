@@ -17,7 +17,7 @@
     enable = true;
     settings = {
       default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --greeting "First boot: Ctrl+Alt+F2 to set your password" --cmd Hyprland";
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --greeting First-boot-setup-on-tty2 --cmd Hyprland";
         user = "greeter";
       };
     };
